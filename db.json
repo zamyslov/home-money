@@ -5,24 +5,6 @@
       "email": "wfm@mail.ru",
       "password": "12345678",
       "name": "Администратор"
-    },
-    {
-      "email": "zamyslov@gmail.com",
-      "password": "111111",
-      "name": "всывсусусус",
-      "id": 2
-    },
-    {
-      "email": "zamyslova.ludmila@gmail.com",
-      "password": "232323232323",
-      "name": "вамвамвамвамв",
-      "id": 3
-    },
-    {
-      "email": "zamyslov@gmail.com1",
-      "password": "32323232323",
-      "name": "васувамвамвам",
-      "id": 4
     }
   ],
   "bill": {
