@@ -4,7 +4,7 @@ import {UserService} from '../../shared/services/user.service';
 import {User} from '../../shared/models/user.module';
 import {Message} from '../../shared/models/message.model';
 import {AuthService} from '../../shared/services/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'wfm-login',
@@ -18,11 +18,13 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService,
               private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute
+  ) {
   }
 
-  private showMessage(text: string, type: string = 'danger') {
-    this.message = new Message(type, text);
+  private showMessage(message: Message) {
+    this.message = message;
     window.setTimeout(() => {
       this.message.text = '';
     }, 2000);
@@ -31,6 +33,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.message = new Message('danger', '');
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['nowCanLogin']) {
+        this.showMessage({text: 'Теперь можно заходить в систему!', type: 'success'});
+      }
+    });
     this.form = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
@@ -47,12 +54,11 @@ export class LoginComponent implements OnInit {
           this.authService.login();
           // this.router.navigate(['']);
         } else {
-          this.showMessage('Неправильный пароль!');
+          this.showMessage({text: 'Неправильный пароль!', type: 'danger'});
         }
       } else {
-        this.showMessage('Такого пользователя не существует!');
+        this.showMessage({text: 'Такого пользователя не существует!', type: 'danger'});
       }
     });
   }
-
 }
