@@ -17,12 +17,12 @@
           <tr>
             <td>Гривня</td>
             <td>1</td>
-            <td>{{date | date:'dd.MM.yyyy'}}</td>
+            <td>{{currency['usd']['date'] | wfmMoment:'ddd, DD MMMM YYYY HH:mm:ss ZZ'}}</td>
           </tr>
           <tr *ngFor="let c of currencies">
             <td>{{currency[c]['name']}}</td>
             <td>{{currency[c]['inverseRate'] | number:'1.2-2'}}</td>
-            <td>{{date | date:'dd.MM.yyyy'}}</td>
+            <td>{{currency[c]['date'] | wfmMoment:'ddd, DD MMMM YYYY HH:mm:ss ZZ'}}</td>
           </tr>
           </tbody>
         </table>

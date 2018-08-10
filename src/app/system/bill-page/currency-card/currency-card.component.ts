@@ -8,7 +8,6 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CurrencyCardComponent implements OnInit {
   @Input() currency: any;
   currencies: string[] = ['usd', 'eur'];
-  date = new Date();
   constructor() { }
 
   ngOnInit() {
