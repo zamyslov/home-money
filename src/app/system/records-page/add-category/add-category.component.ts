@@ -1,7 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {NgForm} from "@angular/forms";
-import {CategoriesService} from "../../shared/services/categories.service";
-import {Category} from "../../shared/models/category.model";
+import {Component, EventEmitter, Output} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {CategoriesService} from '../../shared/services/categories.service';
+import {Category} from '../../shared/models/category.model';
 
 @Component({
   selector: 'wfm-add-category',
@@ -10,19 +10,21 @@ import {Category} from "../../shared/models/category.model";
 })
 export class AddCategoryComponent {
 
-  @Output() newCategory = new EventEmitter<Category>();
+  @Output() onCategoryAdd = new EventEmitter<Category>();
 
   constructor(private categoriesService: CategoriesService) {
   }
 
   onSubmit(form: NgForm) {
-    const {name, capacity} = form.value;
-    if (capacity < 0) capacity *= -1;
+    let {name, capacity} = form.value;
+    if (capacity < 0) {
+      capacity *= -1;
+    }
     const category = new Category(name, capacity);
     this.categoriesService.addCategory(category).subscribe((category: Category) => {
       form.reset();
       form.form.patchValue({capacity: 1});
-      this.newCategory.emit(category);
+      this.onCategoryAdd.emit(category);
     });
   }
 
