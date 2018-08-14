@@ -8,7 +8,7 @@
     }
   ],
   "bill": {
-    "value": 100000,
+    "value": 78000,
     "currency": "UAH"
   },
   "categories": [
@@ -75,13 +75,6 @@
       "description": "Заправка + проход ТО"
     },
     {
-      "amount": 1200,
-      "category": 1,
-      "date": "13.08.2018 16:57:27",
-      "description": "test",
-      "id": 6
-    },
-    {
       "type": "income",
       "amount": 1200,
       "category": 1,
@@ -96,6 +89,30 @@
       "date": "13.08.2018 17:23:36",
       "description": "test",
       "id": 8
+    },
+    {
+      "type": "outcome",
+      "amount": 2000,
+      "category": 3,
+      "date": "14.08.2018 10:51:45",
+      "description": "test",
+      "id": 9
+    },
+    {
+      "type": "outcome",
+      "amount": 10000,
+      "category": 1,
+      "date": "14.08.2018 10:51:58",
+      "description": "test",
+      "id": 10
+    },
+    {
+      "type": "outcome",
+      "amount": 10000,
+      "category": 1,
+      "date": "14.08.2018 10:52:10",
+      "description": "test",
+      "id": 11
     }
   ]
 }
