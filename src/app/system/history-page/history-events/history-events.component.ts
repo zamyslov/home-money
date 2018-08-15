@@ -10,6 +10,9 @@ import {Category} from '../../shared/models/category.model';
 export class HistoryEventsComponent implements OnInit {
   @Input() categories: Category[] = [];
   @Input() events: WFMEvent[] = [];
+  searchValue = '';
+  searchPlaceHolder = 'Сумма';
+  searchfield = 'amount';
 
   constructor() {
   }
@@ -25,7 +28,18 @@ export class HistoryEventsComponent implements OnInit {
       'label': true,
       'label-danger': e.type === 'outcome',
       'label-success': e.type === 'income'
-    }
+    };
+  }
+
+  onChangeCriteria(field: string) {
+    const namesMap = {
+      amount: 'Сумма',
+      date: 'Дата',
+      category: 'Категория',
+      type: 'Тип'
+    };
+    this.searchPlaceHolder = namesMap[field];
+    this.searchfield = field;
   }
 
 }
