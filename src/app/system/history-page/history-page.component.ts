@@ -16,6 +16,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   events: WFMEvent[] = [];
   isLoaded = false;
   chartData = [];
+  isFilterVisible = false;
 
   constructor(private categoriesService: CategoriesService,
               private eventsService: EventsService) {
@@ -53,5 +54,20 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     }
   }
 
+  private toggleFilterVisibility(dir: boolean) {
+    this.isFilterVisible = dir;
+  }
+
+  openFilter() {
+    this.toggleFilterVisibility(true);
+  }
+
+  onFilterApply(filterData) {
+
+  }
+
+  onFilterCancel() {
+    this.toggleFilterVisibility(false);
+  }
 
 }
