@@ -24,6 +24,7 @@ import {HistoryDetailComponent} from './history-page/history-detail/history-deta
 import {HistoryEventsComponent} from './history-page/history-events/history-events.component';
 import {HistoryFilterComponent} from './history-page/history-filter/history-filter.component';
 import {FilterPipe} from './shared/pipes/filter.pipe';
+import {AuthGuard} from '../shared/services/auth.guard.service';
 
 @NgModule({
   imports: [CommonModule, SharedModule, SystemRoutingModule],
@@ -48,7 +49,7 @@ import {FilterPipe} from './shared/pipes/filter.pipe';
     HistoryFilterComponent,
     FilterPipe
   ],
-  providers: [BillService, CategoriesService, EventsService]
+  providers: [BillService, CategoriesService, EventsService, AuthGuard]
 })
 export class SystemModule {
 
