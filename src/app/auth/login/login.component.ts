@@ -6,6 +6,7 @@ import {Message} from '../../shared/models/message.model';
 import {AuthService} from '../../shared/services/auth.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {fadeStateTrigger} from '../../shared/animations/fade.animation';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'wfm-login',
@@ -21,8 +22,15 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService,
               private authService: AuthService,
               private router: Router,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private title: Title,
+              private meta: Meta
   ) {
+    title.setTitle('Вход в систему');
+    meta.addTags([
+      {name: 'keywords', content: 'логин, вход, система'},
+      {name: 'description', content: 'Страница для входа в систему'}
+    ]);
   }
 
   private showMessage(message: Message) {
